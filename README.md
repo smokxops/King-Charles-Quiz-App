@@ -21,9 +21,10 @@ Technologies used
 
 Project Structure
 
-% index.html # Main HTML file
-% quiz-styles.css # App styling
-% quiz-questions.js # Quiz questions data
-% quiz-app.js # Quiz logic
-└── README.md # Project documentation
+% index.html === Main HTML file
+% quiz-styles.css === App styling
+% quiz-questions.js === Quiz questions data
+% quiz-app.js === Quiz logic
+% README.md === Project documentation
+
 
