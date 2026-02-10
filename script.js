@@ -372,7 +372,7 @@ class QuizApp {
     this.progressBar = document.getElementById("progressBar");
     this.scoreElement = document.getElementById("score");
     this.finalScoreElement = document.getElementById("finalScore");
-    this.timerElement = document.getElementById("timeLeft");
+    this.timerElement = document.getElementById("timer");
 
     this.startBtn = document.getElementById("startBtn");
     this.nextBtn = document.getElementById("nextBtn");
@@ -384,7 +384,7 @@ class QuizApp {
     this.score = 0;
 
     // Timer
-    this.timePerQuestion = 15;
+    this.timePerQuestion = 30; // 30 seconds per question
     this.timeLeft = this.timePerQuestion;
     this.timer = null;
 
@@ -413,7 +413,7 @@ class QuizApp {
     const q = this.questions[this.currentIndex];
     if (!q) return;
 
-    this.resetTimer();
+    this.resetTimer(); // start countdown for this question
 
     this.questionElement.textContent = q.question;
     this.answersContainer.innerHTML = "";
@@ -520,5 +520,6 @@ class QuizApp {
 document.addEventListener("DOMContentLoaded", () => {
   new QuizApp();
 });
+
 
 
