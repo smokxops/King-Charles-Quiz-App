@@ -372,6 +372,7 @@ class QuizApp {
     this.progressBar = document.getElementById("progressBar");
     this.scoreElement = document.getElementById("score");
     this.finalScoreElement = document.getElementById("finalScore");
+    this.timerElement = document.getElementById("timeLeft");
 
     this.startBtn = document.getElementById("startBtn");
     this.nextBtn = document.getElementById("nextBtn");
@@ -381,6 +382,11 @@ class QuizApp {
     this.questions = [];
     this.currentIndex = 0;
     this.score = 0;
+
+    // Timer
+    this.timePerQuestion = 15;
+    this.timeLeft = this.timePerQuestion;
+    this.timer = null;
 
     this.init();
   }
@@ -407,6 +413,8 @@ class QuizApp {
     const q = this.questions[this.currentIndex];
     if (!q) return;
 
+    this.resetTimer();
+
     this.questionElement.textContent = q.question;
     this.answersContainer.innerHTML = "";
     this.nextBtn.classList.add("hidden");
@@ -422,6 +430,8 @@ class QuizApp {
   }
 
   selectAnswer(selectedIndex) {
+    clearInterval(this.timer);
+
     const q = this.questions[this.currentIndex];
     const buttons = document.querySelectorAll(".option-btn");
 
@@ -436,6 +446,8 @@ class QuizApp {
   }
 
   nextQuestion() {
+    clearInterval(this.timer);
+
     this.currentIndex++;
     this.updateProgress();
 
@@ -446,7 +458,24 @@ class QuizApp {
     }
   }
 
+  resetTimer() {
+    clearInterval(this.timer);
+    this.timeLeft = this.timePerQuestion;
+    this.timerElement.textContent = this.timeLeft;
+
+    this.timer = setInterval(() => {
+      this.timeLeft--;
+      this.timerElement.textContent = this.timeLeft;
+
+      if (this.timeLeft === 0) {
+        clearInterval(this.timer);
+        this.nextQuestion();
+      }
+    }, 1000);
+  }
+
   endQuiz() {
+    clearInterval(this.timer);
     this.finalScoreElement.textContent = `${this.score} / ${this.questions.length}`;
     this.saveBestScore();
     this.showScreen(this.resultsScreen);
@@ -491,3 +520,5 @@ class QuizApp {
 document.addEventListener("DOMContentLoaded", () => {
   new QuizApp();
 });
+
+
