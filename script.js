@@ -1,344 +1,493 @@
-// King Charles Quiz App Logic
+// 50 Javascript quiz questions
+const quizQuestions = [
+    // NOVICE LEVEL QUESTIONS
+    {
+        id: 1,
+        question: "What is the best way to declare a variable in Javascript?",
+        options: ["var myVar = 10;", "variable myVar = 10;", "v myVar = 10;", "int myVar = 10;"],
+        correct: 0,
+        difficulty: "novice"
+    },
+    {
+        id: 2,
+        question: "Which of the following is NOT a Javascript data type?",
+        options: ["String", "Boolean", "Float", "Undefined"],
+        correct: 2,
+        difficulty: "novice"
+    },
+    {
+        id: 3,
+        question: "What does 'console.log()' do in Javascript?",
+        options: ["Creates a new variable", "Prints output to the console", "Declares a function", "Defines an object"],
+        correct: 1,
+        difficulty: "novice"
+    },
+    {
+        id: 4,
+        question: "Which symbol is used for single line comments in Javascript?",
+        options: ["//", "/*", "#", "<!--"],
+        correct: 0,
+        difficulty: "novice"
+    },
+    {
+        id: 5,
+        question: "What is the result of: 2 + '2' in Javascript?",
+        options: ["4", "22", "NaN", "Error"],
+        correct: 1,
+        difficulty: "novice"
+    },
+    {
+        id: 6,
+        question: "Which method is used to add an element to the end of an array in Javascript?",
+        options: ["push()", "pop()", "shift()", "unshift()"],
+        correct: 0,
+        difficulty: "novice"
+    },
+    {
+        id: 7,
+        question: "What keyword is used to create a function in Javascript?",
+        options: ["def", "function", "func", "method"],
+        correct: 1,
+        difficulty: "novice"
+    },
+    {
+        id: 8,
+        question: "Which operator is used to compare both value and type?",
+        options: ["==", "=", "===", "!="],
+        correct: 2,
+        difficulty: "novice"
+    },
+    {
+        id: 9,
+        question: "What is the correct way to create an array in Javascript?",
+        options: ["let arr = [];", "let arr = new Array();", "let arr = Array();", "All of the above"],
+        correct: 3,
+        difficulty: "novice"
+    },
+    {
+        id: 10,
+        question: "Which method converts a string to lowercase?",
+        options: ["toLowerCase()", "toUpperCase()", "lowercase()", "uppercase()"],
+        correct: 0,
+        difficulty: "novice"
+    },
+    {
+        id: 11,
+        question: "What is the correct syntax for an IF statement?",
+        options: ["if x == 5 then", "if (x == 5)", "if x = 5", "if (x = 5)"],
+        correct: 1,
+        difficulty: "novice"
+    },
+    {
+        id: 12,
+        question: "Which event occurs when a user clicks on an HTML element?",
+        options: ["onclick", "onload", "onmouseover", "onfocus"],
+        correct: 0,
+        difficulty: "novice"
+    },
+    {
+        id: 13,
+        question: "What does 'NaN' stand for in Javascript?",
+        options: ["Not a Number", "Null and Null", "Not a Name", "Number and Number"],
+        correct: 0,
+        difficulty: "novice"
+    },
+    {
+        id: 14,
+        question: "Which method is used to remove the last element from an array in Javascript?",
+        options: ["pop()", "push()", "shift()", "unshift()"],
+        correct: 0,
+        difficulty: "novice"
+    },
+    {
+        id: 15,
+        question: "What is the result of: typeof null in Javascript?",
+        options: ["null", "object", "undefined", "string"],
+        correct: 1,
+        difficulty: "novice"
+    },
+
+    // INTERMEDIATE LEVEL QUESTIONS
+    {
+        id: 16,
+        question: "What will be the output: console.log(0.1 + 0.2 == 0.3)?",
+        options: ["true", "false", "NaN", "undefined"],
+        correct: 1,
+        difficulty: "intermediate"
+    },
+    {
+        id: 17,
+        question: "Which method is used to combine two or more arrays?",
+        options: ["concat()", "merge()", "combine()", "join()"],
+        correct: 0,
+        difficulty: "intermediate"
+    },
+    {
+        id: 18,
+        question: "What is a closure in Javascript?",
+        options: ["A function that has access to its own scope", "A function that has access to the parent scope", "A function that has access to the global scope", "All of the above"],
+        correct: 1,
+        difficulty: "intermediate"
+    },
+    {
+        id: 19,
+        question: "What does 'use strict' do in Javascript?",
+        options: ["Enables strict mode", "Disables strict mode", "Enables debugging mode", "Disables debugging mode"],
+        correct: 0,
+        difficulty: "intermediate"
+    },
+    {
+        id: 20,
+        question: "What of these is NOT a way to create an object?",
+        options: ["Object.create()", "Object.assign()", "Object.defineProperty()", "Object.freeze()"],
+        correct: 3,
+        difficulty: "intermediate"
+    },
+    {
+        id: 21,
+        question: "What is the difference between 'let' and 'var'?",
+        options: ["'let' is block scoped, 'var' is function scoped", "'var' is block scoped, 'let' is function scoped", "'let' and 'var' are the same", "None of the above"],
+        correct: 0,
+        difficulty: "intermediate"
+    },
+    {
+        id: 22,
+        question: "What will console.log(typeof []) output?",
+        options: ["array", "object", "undefined", "string"],
+        correct: 1,
+        difficulty: "intermediate"
+    },
+    {
+        id: 23,
+        question: "Which method is used to parse a JSON string?",
+        options: ["JSON.parse()", "JSON.stringify()", "JSON.toObject()", "JSON.fromString()"],
+        correct: 0,
+        difficulty: "intermediate"
+    },
+    {
+        id: 24,
+        question: "What is the output: console.log(0.1 + 0.2 === 0.3);",
+        options: ["true", "false", "undefined", "NaN"],
+        correct: 1,
+        difficulty: "intermediate"
+    },
+    {
+        id: 25,
+        question: "What does the 'this' keyword refer to in Javascrpt?",
+        options: ["The current function", "The global object", "The object that is executing the current function", "None of the above"],
+        correct: 2,
+        difficulty: "intermediate"
+    },
+    {
+        id: 26,
+        question: "Which ES6 feature allows default parameter values?",
+        options: ["Arrow functions", "Template literals", "Default parameters", "Destructuring"],
+        correct: 2,
+        difficulty: "intermediate"
+    },
+    {
+        id: 27,
+        question: "What is event bubbling in JavaScript?",
+        options: ["A way to stop event propagation", "The process by which an event starts at the most specific element and then flows outward to less specific elements", "A method to create custom events", "A technique to handle multiple events at once"],
+        correct: 1,
+        difficulty: "intermediate"
+    },
+    {
+        id: 28,
+        question: "Which method creates a new array with results of calling a function for every element?",
+        options: ["map()", "filter()", "reduce()", "forEach()"],
+        correct: 0,
+        difficulty: "intermediate"
+    },
+    {
+        id: 29,
+        question: "What is the correct way to check if a variable is an array?",
+        options: ["Array.isArray(variable)", "variable instanceof Array", "variable.constructor === Array", "All of the above"],
+        correct: 3,
+        difficulty: "intermediate"
+    },
+    {
+        id: 30,
+        question: "What does the spread operator (...) do?",
+        options: ["Copies an array or object", "Expands an array or object into its elements", "Merges two arrays", "None of the above"],
+        correct: 1,
+        difficulty: "intermediate"
+    },
+    {
+        id: 31,
+        question: "What is a Promise in JavaScript?",
+        options: ["A way to handle asynchronous operations", "A function that returns a value", "An object that represents the eventual completion of an asynchronous operation", "Both A and C"],
+        correct: 3,
+        difficulty: "intermediate"
+    },
+    {
+        id: 32,
+        question: "What will be logged: console.log([] == ![])?",
+        options: ["true", "false", "undefined", "NaN"],
+        correct: 0,
+        difficulty: "intermediate"
+    },
+    {
+        id: 33,
+        question: "Which method stops event propagation?",
+        options: ["stopPropagation()", "preventDefault()", "stopImmediatePropagation()", "None of the above"],
+        correct: 0,
+        difficulty: "intermediate"
+    },
+    {
+        id: 34,
+        question: "What is the purpose of the 'async' keyword?",
+        options: ["To declare an asynchronous function", "To make a function run in the background", "To allow the use of 'await' inside the function", "All of the above"],
+        correct: 3,
+        difficulty: "intermediate"
+    },
+    {
+        id: 35,
+        question: "What does the 'new' keyword do?",
+        options: ["Creates a new object", "Creates a new instance of a constructor function", "Calls a constructor function", "All of the above"],
+        correct: 1,
+        difficulty: "intermediate"
+    },
+
+    // ADVANCED LEVEL QUESTIONS
+    {
+        id: 36,
+        question: "What is the Temporal Dead Zone in JavaScript?",
+        options: ["The time between variable declaration and initialization", "The time between function declaration and execution", "The time between object creation and property assignment", "None of the above"],
+        correct: 0,
+        difficulty: "advanced"
+    },
+    {
+        id: 37,
+        question: "What will this output: console.log(+'42')?",
+        options: ["42", "-42", "NaN", "undefined"],
+        correct: 0,
+        difficulty: "advanced"
+    },
+    {
+        id: 38,
+        question: "What is the difference between call() and apply()?",
+        options: ["call() accepts arguments as a list, apply() accepts arguments as an array", "apply() accepts arguments as a list, call() accepts arguments as an array", "Both accept arguments as a list", "Both accept arguments as an array"],
+        correct: 0,
+        difficulty: "advanced"
+    },
+    {
+        id: 39,
+        question: "What is memoization in JavaScript?",
+        options: ["A technique to optimize recursive functions by caching results", "A way to create private variables", "A method to handle asynchronous operations", "None of the above"],
+        correct: 0,
+        difficulty: "advanced"
+    },
+    {
+        id: 40,
+        question: "What does Object.freeze() do?",
+        options: ["Prevents new properties from being added to an object", "Prevents existing properties from being removed", "Prevents existing properties from being changed", "All of the above"],
+        correct: 3,
+        difficulty: "advanced"
+    },
+    {
+        id: 41,
+        question: "What is the output: console.log(typeof typeof 1)?",
+        options: ["number", "string", "undefined", "object"],
+        correct: 1,
+        difficulty: "advanced"
+    },
+    {
+        id: 42,
+        question: "What is a generator function in JavaScript?",
+        options: ["A function that can be paused and resumed", "A function that returns an iterator", "A function that uses the 'yield' keyword", "All of the above"],
+        correct: 3,
+        difficulty: "advanced"
+    },
+    {
+        id: 43,
+        question: "What does the void operator do?",
+        options: ["Evaluates an expression and returns undefined", "Prevents default behavior of an event", "Stops event propagation", "None of the above"],
+        correct: 0,
+        difficulty: "advanced"
+    },
+    {
+        id: 44,
+        question: "What is the purpose of WeakMap in JavaScript?",
+        options: ["To store key-value pairs where keys are objects and values can be garbage collected", "To store key-value pairs where keys are strings and values can be garbage collected", "To store key-value pairs where keys are objects and values cannot be garbage collected", "None of the above"],
+        correct: 0,
+        difficulty: "advanced"
+    },
+    {
+        id: 45,
+        question: "What will be logged: console.log([1,2,3].map(parseInt))?",
+        options: ["[1, NaN, NaN]", "[1, 2, 3]", "NaN", "undefined"],
+        correct: 0,
+        difficulty: "advanced"
+    },
+    {
+        id: 46,
+        question: "What is the difference between shallow and deep copy?",
+        options: ["Shallow copy copies only the top level, deep copy copies all levels", "Shallow copy copies all levels, deep copy copies only the top level", "Both are the same", "None of the above"],
+        correct: 0,
+        difficulty: "advanced"
+    },
+    {
+        id: 47,
+        question: "What is a Proxy in JavaScript?",
+        options: ["An object that wraps another object and intercepts operations", "A function that returns a new object", "A method to create custom events", "None of the above"],
+        correct: 0,
+        difficulty: "advanced"
+    },
+    {
+        id: 48,
+        question: "What does 'debouncing' mean in JavaScript?",
+        options: ["A technique to limit the rate at which a function is executed", "A method to handle multiple events at once", "A way to create custom events", "None of the above"],
+        correct: 0,
+        difficulty: "advanced"
+    },
+    {
+        id: 49,
+        question: "What is the output: console.log(1 < 2 < 3 && 3 > 2 > 1)?",
+        options: ["true", "false", "undefined", "NaN"],
+        correct: 1,
+        difficulty: "advanced"
+    },
+    {
+        id: 50,
+        question: "What is tail call optimization in JavaScript?",
+        options: ["A technique to optimize recursive functions by reusing the same stack frame", "A method to handle asynchronous operations", "A way to create custom events", "None of the above"],
+        correct: 0,
+        difficulty: "advanced"
+    }
+];
+
+// KING CHARLES QUIZ APP LOGIC
+
 class QuizApp {
-    constructor() {
-        this.questions = [];
-        this.currentQuestionIndex = 0;
-        this.score = 0;
-        this.timeLeft = 30; // 30 seconds for the quiz
-        this.timerInterval = null;
-        this.difficulty = 'medium'; // default difficulty
-        this.userAnswers = [];
-        this.questionStartTime = 0;
-        this.totalTimeTaken = 0;
+  constructor() {
+    // Screens
+    this.startScreen = document.getElementById("startScreen");
+    this.quizScreen = document.getElementById("quizScreen");
+    this.resultsScreen = document.getElementById("resultsScreen");
 
-        this.initializeElements();
-        this.attachEventListeners();
+    // Elements
+    this.questionElement = document.getElementById("question");
+    this.answersContainer = document.getElementById("answersContainer");
+    this.progressBar = document.getElementById("progressBar");
+    this.scoreElement = document.getElementById("score");
+    this.finalScoreElement = document.getElementById("finalScore");
+
+    this.startBtn = document.getElementById("startBtn");
+    this.nextBtn = document.getElementById("nextBtn");
+    this.retryBtn = document.getElementById("retryBtn");
+
+    // State
+    this.questions = [];
+    this.currentIndex = 0;
+    this.score = 0;
+
+    this.init();
+  }
+
+  init() {
+    this.startBtn.addEventListener("click", () => this.startQuiz());
+    this.nextBtn.addEventListener("click", () => this.nextQuestion());
+    this.retryBtn.addEventListener("click", () => this.restartQuiz());
+  }
+
+  startQuiz() {
+    this.questions = this.shuffleArray([...quizQuestions]);
+    this.currentIndex = 0;
+    this.score = 0;
+
+    this.updateScore();
+    this.updateProgress();
+
+    this.showScreen(this.quizScreen);
+    this.loadQuestion();
+  }
+
+  loadQuestion() {
+    const q = this.questions[this.currentIndex];
+    if (!q) return;
+
+    this.questionElement.textContent = q.question;
+    this.answersContainer.innerHTML = "";
+    this.nextBtn.classList.add("hidden");
+
+    q.options.forEach((option, index) => {
+      const btn = document.createElement("button");
+      btn.textContent = option;
+      btn.className = "option-btn";
+
+      btn.addEventListener("click", () => this.selectAnswer(index));
+      this.answersContainer.appendChild(btn);
+    });
+  }
+
+  selectAnswer(selectedIndex) {
+    const q = this.questions[this.currentIndex];
+    const buttons = document.querySelectorAll(".option-btn");
+
+    buttons.forEach(btn => (btn.disabled = true));
+
+    if (selectedIndex === q.correct) {
+      this.score++;
     }
 
-    initializeElements() {
-        // Screen elements
-        this.startScreen = document.getElementById('startScreen');
-        this.quizScreen = document.getElementById('quizScreen');
-        this.resultsScreen = document.getElementById('resultsScreen');
-        this.reviewScreen = document.getElementById('reviewScreen');
+    this.updateScore();
+    this.nextBtn.classList.remove("hidden");
+  }
 
-        // Quiz elements
-        this.questionElement = document.getElementById('question');
-        this.questionNumElement = document.getElementById('questionNum');
-        this.answersContainer = document.getElementById('answersContainer');
-        this.timerElement = document.getElementById('timer');
-        this.timerBar = document.getElementById('timerBar');
-        this.scoreElement = document.getElementById('score');
-        this.progressBar = document.getElementById('progressBar');
-        this.currentQuestionElement = document.getElementById('currentQuestion');
-        this.totalQuestionsElement = document.getElementById('totalQuestions');
-        this.nextBtn = document.getElementById('nextBtn');
+  nextQuestion() {
+    this.currentIndex++;
+    this.updateProgress();
 
-        // Results elements
-        this.finalScoreElement = document.getElementById('finalScore');
-        this.correctAnswersElement = document.getElementById('correctAnswers');
-        this.wrongAnswersElement = document.getElementById('wrongAnswers');
-        this.accuracyElement = document.getElementById('accuracyRate');
-        this.avgTimeElement = document.getElementById('avgTime');
-        this.verdictElement = document.getElementById('verdict');
-        this.messageElement = document.getElementById('message');
+    if (this.currentIndex < this.questions.length) {
+      this.loadQuestion();
+    } else {
+      this.endQuiz();
     }
+  }
 
-    attachEventListeners() {
-        // Start button
-        document.getElementById('startBtn').addEventListener('click', () => this.startQuiz());
+  endQuiz() {
+    this.finalScoreElement.textContent = `${this.score} / ${this.questions.length}`;
+    this.saveBestScore();
+    this.showScreen(this.resultsScreen);
+  }
 
-        // Difficulty selection
-        document.querySelectorAll('.difficulty-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                document.querySelectorAll('.difficulty-btn').forEach(b => b.classList.remove('active'));
-                e.target.classList.add('active');
-                this.difficulty = e.target.dataset.difficulty;
-            });
-        });
+  restartQuiz() {
+    this.showScreen(this.startScreen);
+  }
 
-        // Next button
-        this.nextBtn.addEventListener('click', () => this.nextQuestion());
+  updateScore() {
+    this.scoreElement.textContent = this.score;
+  }
 
-        // Retry button
-        document.getElementById('retryBtn').addEventListener('click', () => this.resetQuiz());
+  updateProgress() {
+    const progress = (this.currentIndex / this.questions.length) * 100;
+    this.progressBar.style.width = `${progress}%`;
+  }
 
-        // Review button
-        document.getElementById('reviewBtn').addEventListener('click', () => this.showReview());
-
-        // Close review
-        document.getElementById('closeReview').addEventListener('click', () => this.closeReview());
+  saveBestScore() {
+    const best = localStorage.getItem("bestScore") || 0;
+    if (this.score > best) {
+      localStorage.setItem("bestScore", this.score);
     }
+  }
 
-    startQuiz() {
-        // Filter questions based on difficulty
-        this.questions = this.filterQuestionsByDifficulty();
-        
-        // Shuffle questions
-        this.questions = this.shuffleArray(this.questions);
+  showScreen(screen) {
+    [this.startScreen, this.quizScreen, this.resultsScreen].forEach(s =>
+      s.classList.remove("active")
+    );
+    screen.classList.add("active");
+  }
 
-        // Reset quiz state
-        this.currentQuestionIndex = 0;
-        this.score = 0;
-        this.userAnswers = [];
-        this.totalTimeTaken = 0;
-
-        // Update UI
-        this.totalQuestionsElement.textContent = this.questions.length;
-        this.updateScore();
-
-        // Show quiz screen
-        this.showScreen(this.quizScreen);
-        this.loadQuestion();
+  shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
     }
-
-    filterQuestionsByDifficulty() {
-        if (this.difficulty === 'easy') {
-            return quizQuestions.filter(q => q.difficulty === 'easy');
-        } else if (this.difficulty === 'medium') {
-            return quizQuestions.filter(q => q.difficulty === 'easy' || q.difficulty === 'medium');
-        } else {
-            return [...quizQuestions]; // All questions for hard mode
-        }
-    }
-
-    shuffleArray(array) {
-        const shuffled = [...array];
-        for (let i = shuffled.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-        }
-        return shuffled;
-    }
-
-    loadQuestion() {
-        if (this.currentQuestionIndex >= this.questions.length) {
-            this.endQuiz();
-            return;
-        }
-
-        const question = this.questions[this.currentQuestionIndex];
-        
-        // Update question display
-        this.questionElement.textContent = question.question;
-        this.questionNumElement.textContent = this.currentQuestionIndex + 1;
-        this.currentQuestionElement.textContent = this.currentQuestionIndex + 1;
-
-        // Update progress bar
-        const progress = ((this.currentQuestionIndex + 1) / this.questions.length) * 100;
-        this.progressBar.style.width = progress + '%';
-
-        // Clear previous answers
-        this.answersContainer.innerHTML = '';
-
-        // Load answer options
-        question.options.forEach((option, index) => {
-            const optionElement = document.createElement('div');
-            optionElement.className = 'answer-option';
-            optionElement.innerHTML = `<span>${option}</span>`;
-            optionElement.addEventListener('click', () => this.selectAnswer(index));
-            this.answersContainer.appendChild(optionElement);
-        });
-
-        // Hide next button
-        this.nextBtn.classList.add('hidden');
-
-        // Start timer
-        this.questionStartTime = Date.now();
-        this.startTimer();
-    }
-
-    startTimer() {
-        this.timeLeft = 30;
-        this.timerElement.textContent = this.timeLeft;
-        this.timerBar.style.width = '100%';
-
-        clearInterval(this.timerInterval);
-        
-        this.timerInterval = setInterval(() => {
-            this.timeLeft--;
-            this.timerElement.textContent = this.timeLeft;
-            this.timerBar.style.width = (this.timeLeft / 30 * 100) + '%';
-
-            if (this.timeLeft <= 0) {
-                clearInterval(this.timerInterval);
-                this.selectAnswer(null); // Auto-submit with no answer
-            }
-        }, 1000);
-    }
-
-    selectAnswer(selectedIndex) {
-        clearInterval(this.timerInterval);
-
-        const timeTaken = Math.floor((Date.now() - this.questionStartTime) / 1000);
-        this.totalTimeTaken += timeTaken;
-
-        const question = this.questions[this.currentQuestionIndex];
-        const correctIndex = question.correct;
-        const isCorrect = selectedIndex === correctIndex;
-
-        // Calculate score based on speed and correctness
-        if (isCorrect) {
-            const timeBonus = Math.max(0, this.timeLeft * 10); // Bonus for speed
-            const basePoints = 100;
-            this.score += basePoints + timeBonus;
-        }
-
-        // Save user answer
-        this.userAnswers.push({
-            questionId: question.id,
-            question: question.question,
-            options: question.options,
-            userAnswer: selectedIndex,
-            correctAnswer: correctIndex,
-            isCorrect: isCorrect,
-            timeTaken: timeTaken
-        });
-
-        // Update UI
-        this.updateScore();
-
-        // Highlight answers
-        const options = this.answersContainer.querySelectorAll('.answer-option');
-        options.forEach((option, index) => {
-            option.classList.add('disabled');
-            
-            if (index === correctIndex) {
-                option.classList.add('correct');
-            }
-            
-            if (selectedIndex !== null && index === selectedIndex && !isCorrect) {
-                option.classList.add('wrong');
-            }
-        });
-
-        // Show next button
-        this.nextBtn.classList.remove('hidden');
-    }
-
-    nextQuestion() {
-        this.currentQuestionIndex++;
-        this.loadQuestion();
-    }
-
-    updateScore() {
-        this.scoreElement.textContent = String(this.score).padStart(4, '0');
-    }
-
-    endQuiz() {
-        clearInterval(this.timerInterval);
-
-        // Calculate stats
-        const totalQuestions = this.questions.length;
-        const correctAnswers = this.userAnswers.filter(a => a.isCorrect).length;
-        const wrongAnswers = totalQuestions - correctAnswers;
-        const accuracy = Math.round((correctAnswers / totalQuestions) * 100);
-        const avgTime = Math.round(this.totalTimeTaken / totalQuestions);
-
-        // Update results display
-        this.finalScoreElement.textContent = String(this.score).padStart(4, '0');
-        this.correctAnswersElement.textContent = correctAnswers;
-        this.wrongAnswersElement.textContent = wrongAnswers;
-        this.accuracyElement.textContent = accuracy + '%';
-        this.avgTimeElement.textContent = avgTime + 's';
-
-        // Generate verdict
-        this.generateVerdict(accuracy, this.score);
-
-        // Show results screen
-        this.showScreen(this.resultsScreen);
-    }
-
-    generateVerdict(accuracy, score) {
-        let verdict = '';
-        let message = '';
-
-        if (accuracy >= 90 && score >= 4000) {
-            verdict = 'JAVASCRIPT MASTER';
-            message = 'Outstanding performance! You have proven your mastery of JavaScript. Your knowledge is exceptional and your speed is remarkable.';
-        } else if (accuracy >= 80 && score >= 3000) {
-            verdict = 'EXPERT DEVELOPER';
-            message = 'Excellent work! You have a strong grasp of JavaScript concepts. Continue practicing to reach master level.';
-        } else if (accuracy >= 70 && score >= 2000) {
-            verdict = 'PROFICIENT CODER';
-            message = 'Good job! You understand JavaScript fundamentals well. Keep learning to strengthen your expertise.';
-        } else if (accuracy >= 60) {
-            verdict = 'COMPETENT BEGINNER';
-            message = 'Not bad! You have a basic understanding of JavaScript. More practice will help you improve significantly.';
-        } else if (accuracy >= 50) {
-            verdict = 'NOVICE LEARNER';
-            message = 'You are on the right path, but there is much to learn. Study the fundamentals and try again.';
-        } else {
-            verdict = 'NEEDS IMPROVEMENT';
-            message = 'Do not give up! JavaScript takes time to master. Review the basics and challenge yourself again.';
-        }
-
-        this.verdictElement.textContent = verdict;
-        this.messageElement.textContent = message;
-    }
-
-    showReview() {
-        const reviewContent = document.getElementById('reviewContent');
-        reviewContent.innerHTML = '';
-
-        this.userAnswers.forEach((answer, index) => {
-            const reviewItem = document.createElement('div');
-            reviewItem.className = `review-item ${answer.isCorrect ? 'correct-answer' : 'wrong-answer'}`;
-            
-            let optionsHtml = '';
-            answer.options.forEach((option, optIndex) => {
-                let optionClass = 'review-option';
-                
-                if (optIndex === answer.userAnswer) {
-                    optionClass += ' user-answer';
-                }
-                
-                if (optIndex === answer.correctAnswer) {
-                    optionClass += ' correct-answer-option';
-                }
-                
-                optionsHtml += `<div class="${optionClass}">${option}</div>`;
-            });
-
-            reviewItem.innerHTML = `
-                <div class="review-question">
-                    <strong>Question ${index + 1}:</strong> ${answer.question}
-                </div>
-                <div class="review-options">${optionsHtml}</div>
-                <div class="review-result">
-                    ${answer.isCorrect ? '✓ CORRECT' : '✗ INCORRECT'} | Time: ${answer.timeTaken}s
-                </div>
-            `;
-            
-            reviewContent.appendChild(reviewItem);
-        });
-
-        this.showScreen(this.reviewScreen);
-    }
-
-    closeReview() {
-        this.showScreen(this.resultsScreen);
-    }
-
-    resetQuiz() {
-        this.showScreen(this.startScreen);
-        this.currentQuestionIndex = 0;
-        this.score = 0;
-        this.userAnswers = [];
-        this.totalTimeTaken = 0;
-        clearInterval(this.timerInterval);
-    }
-
-    showScreen(screen) {
-        [this.startScreen, this.quizScreen, this.resultsScreen, this.reviewScreen].forEach(s => {
-            s.classList.remove('active');
-        });
-        screen.classList.add('active');
-    }
+    return arr;
+  }
 }
 
-// Initialize app when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    new QuizApp();
-
+document.addEventListener("DOMContentLoaded", () => {
+  new QuizApp();
 });
