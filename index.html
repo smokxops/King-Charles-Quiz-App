@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>King Charles Quiz App - Test your JavaScript Knowledge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Courier+Prime:wght@400;700&family=Archivo+Black&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Start Screen -->
+    <div id="startScreen" class="screen active">
+      <div class="newspaper-header">
+        <div class="date-strip">JAVASCRIPT EDITION • 2026 • VOLUME LXVII</div>
+        <h1 class="mega-title">
+          <span class="title-outline">KING</span>
+          <span class="title-outline">CHARLES</span>
+          <span class="title-outline">QUIZ APP</span>
+        </h1>
+        <div class="subtitle-bar">
+          <span class="subtitle-text"
+            >50 QUESTIONS TO PROVE YOUR JAVASCRIPT KNOWLEDGE</span
+          >
+        </div>
+      </div>
+
+      <div class="start-content">
+        <div class="rules-box">
+          <div class="rules-header">RULES OF ENGAGEMENT</div>
+          <div class="rules-grid">
+            <div class="rule-item">
+              <div class="rule-number">1</div>
+              <div class="rule-text">
+                50 QUESTIONS TO TEST YOUR JAVASCRIPT KNOWLEDGE
+              </div>
+            </div>
+            <div class="rule-item">
+              <div class="rule-number">2</div>
+              <div class="rule-text">30 seconds per question - think fast!</div>
+            </div>
+            <div class="rule-item">
+              <div class="rule-number">3</div>
+              <div class="rule-text">
+                NO CHEATING - NO GOOGLE, NO STACKOVERFLOW
+              </div>
+            </div>
+            <div class="rule-item">
+              <div class="rule-number">4</div>
+              <div class="rule-text">Earn points for speed and accuracy!</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="difficulty-selector">
+          <div class="difficulty-label">SELECT YOUR CHALLENGE LEVEL</div>
+          <div class="difficulty-buttons">
+            <button class="difficulty-btn" data-difficulty="easy">
+              NOVICE
+            </button>
+            <button class="difficulty-btn active" data-difficulty="medium">
+              INTERMEDIATE
+            </button>
+            <button class="difficulty-btn" data-difficulty="hard">
+              ADVANCED
+            </button>
+          </div>
+        </div>
+
+        <button id="startBtn" class="action-btn start-btn">
+          <span class="btn-text">BEGIN YOUR JAVASCRIPT QUEST</span>
+          <span class="btn-arrow">→</span>
+        </button>
+
+        <div class="warning-strip">
+          WARNING: THIS QUIZ WILL TEST YOUR JAVASCRIPT SKILLS TO THEIR LIMITS.
+          PROCEED WITH CAUTION.
+        </div>
+      </div>
+    </div>
+
+    <!-- Quiz Screen -->
+    <div id="quizScreen" class="screen">
+      <div class="quiz-header">
+        <div class="progress-section">
+          <div class="progress-label">PROGRESS</div>
+          <div class="progress-bar-container">
+            <div id="progressBar" class="progress-bar"></div>
+          </div>
+          <div class="progress-text">
+            <span id="currentQuestion">1</span>/<span id="totalQuestions"
+              >50</span
+            >
+          </div>
+        </div>
+
+        <div class="timer-section">
+          <div class="timer-label">TIME LEFT</div>
+          <div id="timer" class="timer-display">30</div>
+          <div class="timer-bar-container">
+            <div id="timerBar" class="timer-bar"></div>
+          </div>
+        </div>
+
+        <div class="score-section">
+          <div class="score-label">SCORE</div>
+          <div id="score" class="score-display">0000</div>
+        </div>
+      </div>
+
+      <div class="question-container">
+        <div class="question-number-badge">
+          Q<span id="questionNum">1</span>
+        </div>
+        <h2 id="question" class="question-text"></h2>
+      </div>
+
+      <div id="answersContainer" class="answers-container">
+        <!-- Answers will be dynamically inserted here -->
+      </div>
+
+      <button id="nextBtn" class="action-btn next-btn hidden">
+        <span class="btn-text">NEXT QUESTION</span>
+        <span class="btn-arrow">→</span>
+      </button>
+    </div>
+
+    <!-- Results Screen -->
+    <div id="resultsScreen" class="screen">
+      <div class="results-header">
+        <div class="results-stamp">EXAMINATION COMPLETE</div>
+        <h1 class="results-title">
+          <span class="results-label">YOUR FINAL SCORE:</span>
+          <span class="results-score-display" id="finalScore">0000</span>
+          <span class="results-label">POINTS</span>
+        </h1>
+      </div>
+
+      <div class="results-content">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number" id="correctAnswers">0</div>
+            <div class="stat-label">CORRECT</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="wrongAnswers">0</div>
+            <div class="stat-label">INCORRECT</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="accuracyRate">0%</div>
+            <div class="stat-label">ACCURACY</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="avgTime">0s</div>
+            <div class="stat-label">AVG TIME</div>
+          </div>
+        </div>
+
+        <div class="verdict-box">
+          <div class="verdict-label">VERDICT</div>
+          <div id="verdict" class="verdict-text"></div>
+          <div id="message" class="verdict-message"></div>
+        </div>
+
+        <div class="results-actions">
+          <button id="retryBtn" class="action-btn retry-btn">
+            <span class="btn-text">RETRY QUIZ</span>
+            <span class="btn-arrow">↻</span>
+          </button>
+          <button id="reviewBtn" class="action-btn review-btn">
+            <span class="btn-text">REVIEW ANSWERS</span>
+            <span class="btn-arrow">🔍</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Review Screen -->
+    <div id="reviewScreen" class="screen">
+      <div class="review-header">
+        <h2 class="review-title">ANSWER REVIEW</h2>
+        <button id="closeReview" class="close-review">✕</button>
+      </div>
+      <div id="reviewContent" class="review-content">
+        <!-- Review content will be dynamically inserted here -->
+      </div>
+    </div>
+
+    <script src="quizquestions.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
