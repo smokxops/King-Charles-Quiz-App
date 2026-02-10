@@ -6,7 +6,7 @@ class QuizApp {
         this.score = 0;
         this.timeLeft = 30; // 30 seconds for the quiz
         this.timerInterval = null;
-        this.difficulty = 'intermediate'; // default difficulty
+        this.difficulty = 'medium'; // default difficulty
         this.userAnswers = [];
         this.questionStartTime = 0;
         this.totalTimeTaken = 0;
@@ -340,4 +340,5 @@ class QuizApp {
 // Initialize app when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     new QuizApp();
+
 });
