@@ -53,8 +53,8 @@ const quizQuestions = [
     {
         id: 8,
         question: "Which operator is used to compare both value and type?",
-        options: ["==", "===", "=", "!="],
-        correct: 1,
+        options: ["==", "=", "===", "!="],
+        correct: 2,
         difficulty: "novice"
     },
     {
@@ -360,4 +360,5 @@ const quizQuestions = [
 // EXPORT FOR USE IN MAIN APPLICATION
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = quizQuestions;
+
 }
